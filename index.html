@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#0c0c0d" name="theme-color"/>
+<meta content="Unicash is a BNB Chain marketplace for fully onchain SVG NFTs, settled in ZEC and designed around Uniswap v4 hooks." name="description"/>
+<title>Unicash BNB</title>
+<link href="favicon-unicash.png?v=1" rel="icon" type="image/png"/>
+<link href="favicon.ico?v=1" rel="shortcut icon"/>
+<link href="styles.css?v=11" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<aside aria-label="Primary navigation" class="rail">
+<a aria-label="Unicash home" class="brand-mini" href="#discover"><img alt="Unicash" src="favicon-unicash.png?v=1"/></a>
+<nav id="railNav">
+<a aria-label="Discover" class="active" data-view="discover" href="#discover">◉</a>
+<a aria-label="Collections" data-view="collections" href="#collections">▦</a>
+<a aria-label="Swap BNB for ZEC" data-view="swap" href="#swap">⇄</a>
+<a aria-label="Activity" data-view="activity" href="#activity">⌁</a>
+<a aria-label="Studio" data-view="studio" href="#studio">✦</a>
+<a aria-label="Profile" data-view="profile" href="#profile">♙</a>
+<a aria-label="Protocol" data-view="protocol" href="#protocol">▤</a>
+</nav>
+<button aria-label="Toggle ambient glow" class="rail-end" id="themePulse">◌</button>
+</aside>
+<div class="surface">
+<header class="topbar">
+<button class="search" id="searchBtn"><span>⌕</span><span>Search Unicash…</span><kbd>/</kbd></button>
+<a aria-label="Unicash on X" class="x-link" href="https://x.com/Unicashbnb" rel="noopener noreferrer" target="_blank"><b>𝕏</b><span>@Unicashbnb</span></a>
+<button class="primary small" id="connectBtn"><span class="desktop-label">Connect wallet</span><span class="mobile-label">Connect</span></button>
+</header>
+<main>
+<section class="view active" data-view-panel="discover">
+<div class="hero-grid">
+<article class="hero-card">
+<img alt="Yellow pixel unicorn with a silver face and white stepped outline" class="hero-bg" src="assets/hero/unicash-mainpage-reference.png?v=1"/>
+<div class="scanlines"></div>
+<div class="hero-copy">
+<span class="eyebrow dark">UNISWAP V4 HOOKS · ONCHAIN SVG</span>
+<h1>UNI<br/><em>CASH</em></h1>
+<p>ZEC-settled SVG NFTs on BNB Chain, designed around Uniswap v4 hook-powered market logic</p>
+</div>
+<div class="hero-facts">
+<div><span>SETTLEMENT</span><strong>ZEC</strong></div>
+<div><span>NETWORK</span><strong>BNB</strong></div>
+<div><span>ENGINE</span><strong>V4 HOOKS</strong></div>
+</div>
+</article>
+<aside class="market-panel">
+<div class="stat-row"><div><strong>0</strong><span>ITEMS LIVE</span></div><div><strong>0</strong><span>COLLECTIONS</span></div><div><strong>ZEC</strong><span>ONLY</span></div></div>
+<div class="table-card hook-card">
+<div class="table-title"><b>⌘ NFT V4 HOOK</b><span>SOLIDITY</span></div>
+<pre class="hook-code"><code><span class="code-key">function</span> beforeSwap(
+  PoolKey calldata key,
+  IPoolManager.SwapParams calldata p
+) external <span class="code-key">returns</span> (bytes4) {
+  _settleNFTMarket(key, p, ZEC);
+  _chargeHookFee(key, ZEC);
+  _syncNFTLiquidity(key);
+  <span class="code-key">return</span> this.beforeSwap.selector;
+}</code></pre>
+</div>
+</aside>
+</div>
+<a class="launch-strip" data-route="studio" href="#studio">
+<div><span class="micro">CREATOR RAIL</span><strong>Launch full-onchain SVG NFTs with programmable Uniswap v4 hooks</strong></div>
+<div class="strip-tags"><span>BEP-721</span><span>UNISWAP V4 HOOKS</span><span>ERC-404 / DN404</span><b>→</b></div>
+</a>
+<section class="section-block">
+<div class="section-heading"><div><span class="micro">COLLECTION GALLERY</span><h2>Featured NFTs</h2></div></div>
+<div class="nft-grid" id="featuredGrid"></div>
+</section>
+<section class="privacy-band">
+<div><span>01</span><h3>ZEC settlement</h3><p>Marketplace pricing, bids and purchases are denominated in the verified ZEC token on BNB Chain</p></div>
+<div><span>02</span><h3>Fully onchain art</h3><p>Token metadata can return a self-contained data URI with the SVG encoded directly by the NFT contract</p></div>
+<div><span>03</span><h3>Privacy, honestly</h3><p>BNB Chain is public Shielded ownership requires a separate audited privacy layer; onchain SVG alone does not hide wallets</p></div>
+</section>
+<section class="protocol-banner">
+<div><span class="micro">THE PROTOCOL</span><h2>Onchain SVG NFTs<br/>Uniswap v4 hook-powered markets</h2></div>
+<p>Unicash uses BEP-721/ERC-721 for NFT ownership and is designed to use Uniswap v4 hooks for programmable ZEC settlement, fees and pool-aware market logic ERC-404/DN404 remains an optional hybrid path The hook contracts are architecture intent until deployed and verified</p>
+<a data-route="protocol" href="#protocol">Read architecture →</a>
+</section>
+</section>
+<section class="view" data-view-panel="collections">
+<div class="page-title"><span class="micro">COLLECTION GALLERY</span><h1>NFT gallery</h1></div>
+<div class="filterbar"><button class="active" data-filter="all">All</button><button data-filter="cyphers">Cyphers</button><button data-filter="shielded">Shielded</button><button data-filter="pixel-punks">Pixel Punks</button><span></span><input id="collectionFilter" placeholder="Filter NFTs"/></div>
+<div class="nft-grid catalog-grid" id="collectionGrid"></div>
+</section>
+<section class="view" data-view-panel="swap">
+<div class="page-title centered"><span class="micro">LIQUIDITY ACCESS</span><h1>Swap BNB for ZEC</h1><p>The bridge is replaced by a direct BNB → ZEC swap route</p></div>
+<div class="swap-layout">
+<article class="swap-card">
+<div class="swap-tabs"><button class="active">SWAP</button><a href="https://dexscreener.com/bsc/0xbd0dbc5830d49ee8b3f068bff495e891e015fd7c" rel="noopener" target="_blank">POOL ↗</a></div>
+<label>YOU PAY</label>
+<div class="token-input"><input aria-label="BNB amount" id="bnbAmount" inputmode="decimal" placeholder="0.00"/><span class="token-pill bnb">◈ BNB</span></div>
+<button aria-label="Swap direction" class="flip" id="flipBtn">↓</button>
+<label>YOU RECEIVE</label>
+<div class="token-input readonly"><input aria-label="Estimated ZEC amount" id="zecAmount" placeholder="0.00" readonly=""/><span class="token-pill zec">ⓩ ZEC</span></div>
+<div class="route-facts"><div><span>ROUTE</span><strong>PancakeSwap V3</strong></div><div><span>PAIR</span><strong>ZEC / WBNB</strong></div><div><span>EST RATE</span><strong id="rateText">Loading live pool…</strong></div></div>
+<a class="primary swap-cta" href="https://pancakeswap.finance/swap?chain=bsc&amp;outputCurrency=0x1Ba42e5193dfA8B03D15dd1B86a3113bbBEF8Eeb" id="swapCta" rel="noopener" target="_blank">Open verified swap ↗</a>
+<p class="safety">Quotes and execution occur on PancakeSwap Verify the output token address before signing</p>
+</article>
+<aside class="contract-card">
+<span class="micro">VERIFIED ASSET</span><div class="coin-large">Z</div><h2>Zcash Token</h2><b>ZEC · 18 DECIMALS</b>
+<code>0x1Ba42e5193dfA8B03D15dd1B86a3113bbBEF8Eeb</code>
+<div class="contract-actions"><button id="copyToken">Copy address</button><a href="https://bscscan.com/token/0x1ba42e5193dfa8b03d15dd1b86a3113bbbef8eeb" rel="noopener" target="_blank">BscScan ↗</a></div>
+<div class="verified-note"><i>✓</i><p><strong>Read from BNB Chain</strong><br/>Name, symbol, decimals and deployed bytecode were checked against a public RPC</p></div>
+</aside>
+</div>
+</section>
+<section class="view" data-view-panel="activity">
+<div class="page-title"><span class="micro">ONCHAIN FEED</span><h1>Activity</h1><p>Marketplace events will appear only after verified contracts are deployed</p></div>
+<div class="empty-page"><span>⌁</span><h2>No marketplace events yet</h2><p>Mint, listing, sale and transfer receipts will be indexed from BNB Chain This interface does not fabricate activity</p></div>
+</section>
+<section class="view" data-view-panel="studio">
+<div class="page-title"><span class="micro">CREATOR STUDIO</span><h1>Write art into the token</h1><p>A launch workflow designed for deterministic, self-contained SVG collections</p></div>
+<div class="studio-grid">
+<article><b>01</b><h3>Compose SVG</h3><p>Build artwork from contract-safe primitives, palettes and trait rules</p><button data-demo="svg">Preview generator</button></article>
+<article><b>02</b><h3>Encode metadata</h3><p>Return JSON and SVG as data URIs directly from tokenURI</p><button data-demo="metadata">Inspect schema</button></article>
+<article><b>03</b><h3>Set ZEC market</h3><p>Listings use the verified BEP-20 ZEC token as settlement currency</p><button data-demo="market">View settlement flow</button></article>
+</div>
+<div class="code-window" id="studioOutput"><div><i></i><i></i><i></i><span>ONCHAIN_BLUEPRINTSOL</span></div><pre id="codePreview">Select a workflow card to inspect the architecture.</pre></div>
+</section>
+<section class="view" data-view-panel="profile">
+<div class="page-title"><span class="micro">PORTFOLIO</span><h1>Your vault</h1><p>Connect a wallet to read its future ZEC-settled NFT positions</p></div>
+<div class="profile-card"><div class="avatar-placeholder">?</div><h2 id="profileAddress">Wallet not connected</h2><p id="profileNetwork">BNB Chain · chain ID 56</p><button class="primary" id="profileConnect">Connect wallet</button></div>
+</section>
+<section class="view" data-view-panel="protocol">
+<div class="page-title"><span class="micro">ARCHITECTURE</span><h1>Protocol model</h1><p>Production intent without invented deployment claims</p></div>
+<div class="docs-layout">
+<nav><a href="#p-standard">Standard</a><a href="#p-art">Onchain SVG</a><a href="#p-hooks">V4 hooks</a><a href="#p-settlement">ZEC settlement</a><a href="#p-privacy">Privacy boundary</a><a href="#p-status">Integration status</a></nav>
+<article>
+<section id="p-standard"><span>01 / STANDARD</span><h2>BEP-721 / ERC-721 first</h2><p>BNB Chain is EVM-compatible, so the canonical NFT interface is ERC-721, commonly called BEP-721 in the BNB ecosystem ERC-1155 is appropriate for editions ERC-404 and DN404 are hybrid fungible/NFT designs, not a replacement for a straightforward collection contract</p></section>
+<section id="p-art"><span>02 / MEDIA</span><h2>SVG generated by contract code</h2><p>The NFT contract can generate its image and metadata entirely onchain A tokenURI returns Base64-encoded JSON; its image field contains a Base64-encoded SVG data URI There is no IPFS gateway dependency</p></section>
+<section id="p-hooks"><span>03 / UNISWAP V4</span><h2>Programmable market logic through hooks</h2><p>The intended architecture uses Uniswap v4 hooks to coordinate ZEC liquidity, protocol fees and pool-aware settlement rules around the NFT market Hooks extend pool behavior; NFT ownership remains in the BEP-721 contract No hook contract is presented as deployed until its address and bytecode are verified</p></section>
+<section id="p-settlement"><span>04 / MARKET</span><h2>Everything priced in ZEC</h2><p>The marketplace contract should transfer the verified ZEC BEP-20 token for listings, bids and royalties Buyers approve only the exact required amount immediately before purchase</p></section>
+<section id="p-privacy"><span>05 / PRIVACY</span><h2>Public chain, explicit boundary</h2><p>Fully onchain media improves permanence and verifiability, not transaction privacy BNB wallet balances, approvals and transfers are public “Total privacy” requires a separate audited shielded settlement design and must not be claimed before it exists</p></section>
+<section id="p-status"><span>06 / STATUS</span><h2>Frontend prototype</h2><p>The ZEC token is verified NFT collection, marketplace, Uniswap v4 hook, privacy and indexer contract addresses are not yet supplied, so mint, list and buy writes remain unavailable</p></section>
+</article>
+</div>
+</section>
+</main>
+<footer><div><b>UNICASH</b><span>ZEC-settled SVG NFT market with Uniswap v4 hooks</span></div><nav><a href="#discover">Discover</a><a href="#collections">Collections</a><a href="#swap">Swap</a><a href="#protocol">Protocol</a></nav><code>BNB · ZEC · SVG</code></footer>
+</div>
+</div>
+<dialog id="searchDialog"><form method="dialog"><button aria-label="Close">×</button><label>SEARCH UNICASH</label><input autofocus="" id="globalSearch" placeholder="Collections, token IDs, wallets…"/><div id="searchResults"><p>Try “SVG”, “ZEC”, “Swap” or “Protocol”</p></div></form></dialog>
+<div aria-live="polite" id="toast" role="status"></div>
+<script src="app.js?v=10"></script>
+</body>
+</html>
